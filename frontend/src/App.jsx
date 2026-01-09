@@ -10,13 +10,15 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        {/* Global Toast Notifications */}
         <Toaster position="top-right" />
 
         <Routes>
+          {/* Public Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
 
-          {/* WRAP THE DASHBOARD ROUTE HERE */}
+          {/* Protected Dashboard Route */}
           <Route
             path="/dashboard"
             element={
@@ -26,6 +28,7 @@ function App() {
             }
           />
 
+          {/* Fallback Route */}
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
       </BrowserRouter>

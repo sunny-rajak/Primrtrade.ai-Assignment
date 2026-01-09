@@ -8,15 +8,16 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
 
+  // Handle login form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await login(formData.email, formData.password);
 
     if (result.success) {
-      toast.success("Login successful!"); // <--- Success Toast
+      toast.success("Login successful!");
       navigate("/dashboard");
     } else {
-      toast.error(result.message); // <--- Error Toast
+      toast.error(result.message);
     }
   };
 

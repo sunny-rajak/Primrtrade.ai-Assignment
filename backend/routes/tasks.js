@@ -9,7 +9,7 @@ const router = express.Router();
 // @access  Private
 router.get("/", protect, async (req, res) => {
   try {
-    // Find tasks where 'user' matches the logged-in user's ID
+    // Fetch tasks specifically for the authenticated user
     const tasks = await Task.find({ user: req.user._id }).sort({
       createdAt: -1,
     });
@@ -30,8 +30,9 @@ router.post("/", protect, async (req, res) => {
       return res.status(400).json({ message: "Please add a title" });
     }
 
+    // Create task linked to the current user
     const task = await Task.create({
-      user: req.user._id, // Associate task with logged-in user
+      user: req.user._id,
       title,
       description,
     });
@@ -51,7 +52,7 @@ router.put("/:id", protect, async (req, res) => {
 
     if (!task) return res.status(404).json({ message: "Task not found" });
 
-    // Make sure the logged-in user owns this task
+    // Ensure user owns the task before updating
     if (task.user.toString() !== req.user.id) {
       return res.status(401).json({ message: "User not authorized" });
     }
@@ -59,7 +60,7 @@ router.put("/:id", protect, async (req, res) => {
     const updatedTask = await Task.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true } // Return the updated object
+      { new: true } // Return the updated document
     );
 
     res.json(updatedTask);
@@ -77,7 +78,7 @@ router.delete("/:id", protect, async (req, res) => {
 
     if (!task) return res.status(404).json({ message: "Task not found" });
 
-    // Check ownership
+    // Verify ownership before deletion
     if (task.user.toString() !== req.user.id) {
       return res.status(401).json({ message: "User not authorized" });
     }

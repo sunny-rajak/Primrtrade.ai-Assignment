@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [formData, setFormData] = useState({ title: "", description: "" });
   const [editingId, setEditingId] = useState(null);
 
+  // Fetch tasks from API on component mount
   const fetchTasks = async () => {
     try {
       const { data } = await API.get("/tasks");
@@ -31,16 +32,17 @@ const Dashboard = () => {
     fetchTasks();
   }, []);
 
+  // Handle Create or Update task
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (editingId) {
         await API.put(`/tasks/${editingId}`, formData);
-        toast.success("Task updated successfully!"); // Success Toast
+        toast.success("Task updated successfully!");
         setEditingId(null);
       } else {
         await API.post("/tasks", formData);
-        toast.success("Task created successfully!"); // Success Toast
+        toast.success("Task created successfully!");
       }
 
       setFormData({ title: "", description: "" });
@@ -50,9 +52,8 @@ const Dashboard = () => {
     }
   };
 
-  // --- NEW SWEETALERT DELETE LOGIC ---
+  // Handle Delete with SweetAlert confirmation
   const handleDelete = async (id) => {
-    // SweetAlert Confirmation
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -66,9 +67,8 @@ const Dashboard = () => {
     if (result.isConfirmed) {
       try {
         await API.delete(`/tasks/${id}`);
-        setTasks(tasks.filter((task) => task._id !== id));
+        setTasks(tasks.filter((task) => task._id !== id)); // Optimistic update
 
-        // Success Alert
         Swal.fire("Deleted!", "Your task has been deleted.", "success");
       } catch (error) {
         toast.error("Failed to delete task");
@@ -76,11 +76,12 @@ const Dashboard = () => {
     }
   };
 
+  // Prepare form for editing
   const handleEdit = (task) => {
     setFormData({ title: task.title, description: task.description });
     setEditingId(task._id);
     window.scrollTo({ top: 0, behavior: "smooth" });
-    toast("Editing mode enabled", { icon: "✏️" }); // Custom Icon Toast
+    toast("Editing mode enabled", { icon: "✏️" });
   };
 
   const handleLogout = () => {
@@ -89,9 +90,7 @@ const Dashboard = () => {
     navigate("/login");
   };
 
-  // ... (Rest of the JSX remains exactly the same as before) ...
-  // Be sure to include the return statement and rest of the UI code here.
-
+  // Filter tasks based on search query
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(searchQuery.toLowerCase())
   );

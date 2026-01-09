@@ -2,20 +2,21 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
+// Wrapper for protected routes to ensure authentication
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
 
-  // 1. If auth is still loading (checking localStorage), show nothing or a spinner
+  // Show loading state while checking auth
   if (loading) {
     return <div className="text-center mt-20">Loading...</div>;
   }
 
-  // 2. If loading is done and no user is found, Redirect to Login
+  // Redirect to login if not authenticated
   if (!user) {
     return <Navigate to="/login" replace />;
   }
 
-  // 3. If user exists, render the Dashboard (children)
+  // Render protected content
   return children;
 };
 

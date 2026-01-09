@@ -1,5 +1,6 @@
 import React from "react";
 
+// Component to display individual task details
 const TaskCard = ({ task, onDelete, onEdit }) => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-200 border border-gray-100">

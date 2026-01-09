@@ -13,6 +13,7 @@ const RegisterPage = () => {
     password: "",
   });
 
+  // Handle registration form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await register(

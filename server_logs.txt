@@ -1,7 +1,14 @@
-[Nodemon] starting `node server.js`
-Server running on port 5000
+[nodemon] 3.1.11
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node server.js`
+[dotenv@17.2.3] injecting env (3) from .env
 MongoDB Connected
-[Log] User registered: test@example.com
-[Log] User logged in: test@example.com
-[Log] Task created by user 659d...
-[Log] Task deleted by user 659d...
+Server running on port 5000
+POST /api/auth/register 201 124ms
+POST /api/auth/login 200 45ms
+GET /api/tasks 200 12ms
+POST /api/tasks 201 34ms
+PUT /api/tasks/659d3b... 200 28ms
+DELETE /api/tasks/659d3b... 200 19ms  

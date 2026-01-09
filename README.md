@@ -21,6 +21,17 @@ A scalable, responsive web application for managing tasks with secure authentica
   - SweetAlert2 confirmation popups for critical actions.
 - **Scalability Plan:** Includes a detailed architectural strategy for scaling to 100k+ users (see `SCALABILITY.md`).
 
+## 📖 API Documentation
+
+The repository includes a comprehensive Postman Collection to test the API endpoints (Auth & CRUD).
+
+- **File Location:** `postman_collection.json` (Root directory)
+- **How to use:**
+  1. Open Postman.
+  2. Click **Import** -> Select `postman_collection.json`.
+  3. The collection `Internship Assignment API` will appear.
+  4. Use the requests to Register, Login, and manage Tasks.
+
 ## 🛠️ Installation & Setup
 
 ### 1. Prerequisites
@@ -77,5 +88,7 @@ root/
 │   │   ├── context/  # Auth State
 │   │   ├── pages/    # Login, Dashboard
 │   │   └── components/
-└── SCALABILITY.md    # Architecture Plan
+├── SCALABILITY.md          # Architecture & Scaling Plan
+├── postman_collection.json # API Request Collection
+└── server_logs.txt         # Server activity logs
 ```

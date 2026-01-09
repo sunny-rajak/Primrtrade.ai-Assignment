@@ -1,30 +1,36 @@
 # Task Management App (MERN Stack)
 
-A scalable, responsive web application for managing tasks with secure authentication. Built for the Frontend Developer Intern assignment.
+A scalable, responsive web application for managing tasks with secure authentication. Built for the Frontend Developer Intern assignment at Primetrade.AI.
 
 ## 🚀 Tech Stack
 
-- **Frontend:** React (Vite), Tailwind CSS, Axios, React Hot Toast, SweetAlert2.
+- **Frontend:** React (Vite), Tailwind CSS, Axios.
+- **UI Libraries:** React Hot Toast (Notifications), SweetAlert2 (Modals).
 - **Backend:** Node.js, Express.js.
 - **Database:** MongoDB Atlas (Cloud).
 - **Authentication:** JWT (JSON Web Tokens) & BCrypt.
 
 ## ✨ Features
 
-- **Authentication:** Secure Login & Registration with JWT.
+- **Authentication:** Secure Login & Registration with JWT and local storage persistence.
 - **Protected Routes:** Dashboard is inaccessible without a valid token.
 - **CRUD Operations:** Create, Read, Update, and Delete tasks.
-- **Responsive Design:** Fully mobile-friendly UI.
-- **UX Enhancements:** Toast notifications and confirmation popups.
+- **Responsive Design:** Fully mobile-friendly UI using Tailwind CSS.
+- **UX Enhancements:**
+  - Toast notifications for success/error states.
+  - SweetAlert2 confirmation popups for critical actions.
+- **Scalability Plan:** Includes a detailed architectural strategy for scaling to 100k+ users (see `SCALABILITY.md`).
 
 ## 🛠️ Installation & Setup
 
 ### 1. Prerequisites
 
-- Node.js installed
+- Node.js (v14+ recommended)
 - MongoDB Atlas Connection String
 
 ### 2. Backend Setup
+
+Navigate to the backend folder and install dependencies:
 
 ```bash
 cd backend

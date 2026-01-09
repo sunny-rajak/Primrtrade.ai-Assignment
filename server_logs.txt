@@ -1,0 +1,7 @@
+[Nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB Connected
+[Log] User registered: test@example.com
+[Log] User logged in: test@example.com
+[Log] Task created by user 659d...
+[Log] Task deleted by user 659d...
